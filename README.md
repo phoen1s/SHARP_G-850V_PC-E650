@@ -1,4 +1,4 @@
-SHARP-G850V-WIFI-SEND
+**SHARP-G850V-WIFI-SEND**
 
 
 He creado un programa para mandar los archivos por wifi a la SHARP G850V,solo se requiere el conector y que la sharp este en la misma red encendida y recibiendo.
