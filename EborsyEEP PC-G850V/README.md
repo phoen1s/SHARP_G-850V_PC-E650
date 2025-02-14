@@ -2,6 +2,14 @@
 
 
 Se trata de una placa de memoria complementaria que se conecta al terminal de bus del sistema de una computadora de bolsillo (PC-G850V/PC-G850, en adelante denominada Pocket Computer) y está equipada con 128 KB de SRAM y 8 MB de EEPROM. Sin embargo, solo se pueden utilizar 96 KB de SRAM como memoria externa.
+<p align="center">
+<img src="https://github.com/user-attachments/assets/1e42ea2a-3586-4ecf-b822-3a335b08cac7" width="400">
+</p>
+<p align="center">
+<p align="center">
+<img src="https://github.com/user-attachments/assets/d5c171f6-69f7-4ddf-b6fe-6f6d98397163" width="400">
+</p>
+<p align="center">
 
 Según la información proporcionada por los usuarios, también es compatible con los modelos PC-G850S y PC-G850VS.
 
