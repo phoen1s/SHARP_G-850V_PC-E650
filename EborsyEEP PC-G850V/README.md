@@ -18,3 +18,8 @@ El software incluido permite ejecutar CP/M en la computadora de bolsillo, lo que
 Además, al conectar la placa a una PC mediante un cable de comunicación serial, esta puede utilizarse como terminal. La velocidad de comunicación es de 19.200 bps, empleando el método serial por software.
 
 Por otro lado, el lanzador desarrollado para CP/M permite ejecutar software convencional de computadoras de bolsillo (escrito en código de máquina a partir de 100H) dentro del entorno CP/M.
+
+Preparacion:
+https://www.youtube.com/watch?v=cotgi_fuLcE
+Instalacion:
+https://www.youtube.com/watch?v=W364amdXnY4
