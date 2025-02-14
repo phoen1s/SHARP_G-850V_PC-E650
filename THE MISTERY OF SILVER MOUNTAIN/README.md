@@ -1,7 +1,6 @@
 # THE-MISTERY-OF-SILVER-MOUNTAIN
 Este es un juego de aventuras de texto en castellano. Está comprobado y adaptado para su uso en la CASIO Z1, SHARP PC-G850VS y modelos compatibles. Es necesario disponer de más de 32K para poder ejecutarlo.
 
-https://www.youtube.com/watch?v=QSVBViD6FD0
 
 Para jugar correctamente y completar la aventura, se debe tener el libro El misterio de la montaña de plata, el cual está disponible de forma gratuita en la página de Usborne:
 
