@@ -1,4 +1,4 @@
-# Programas, juegos y proyectos para calculadoras Sharp G-850V, PC-E650 y compatibles
+# Programas y proyectos para calculadoras Sharp G-850V, PC-E650 y compatibles
 
 
 En esta página se desarrollarán programas y juegos diseñados para las calculadoras Sharp G-850V, PC-E650 y modelos compatibles. Se explorarán diferentes aplicaciones prácticas y de entretenimiento, aprovechando las capacidades de estas calculadoras programables.
