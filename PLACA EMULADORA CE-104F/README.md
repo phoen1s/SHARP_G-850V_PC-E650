@@ -9,6 +9,11 @@ La unidad Sharp CE-140F era una extensión rara y costosa compatible con varios 
 
 La solución propuesta emula esta unidad física, permitiendo a los Sharp Pocket PC gestionar archivos de manera completa a través de una tarjeta SD, haciendo posible el intercambio de datos con una PC moderna.
 
+<p align="center">
+<img src="https://github.com/user-attachments/assets/f8fdfb40-48c0-4324-acc9-169b6ee33f65" width="400">
+</p>
+<p align="center">
+
 
 
 
