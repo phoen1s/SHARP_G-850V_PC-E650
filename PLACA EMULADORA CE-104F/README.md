@@ -1,4 +1,4 @@
-# Placa emuladora CE-104F para Sharp PC-E650 y compatibles
+# Placa emuladora CE-104F para Sharp PC-E650
 
 
 Se ha desarrollado un módulo de hardware que emula la unidad de disquete Sharp CE-140F, utilizando una tarjeta SD y un microcontrolador STM32.
