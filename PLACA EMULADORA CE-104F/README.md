@@ -23,11 +23,8 @@ https://booth.pm/ja/items/4941857
 
 El driver original tiene una pequeña limitación con los programas de más de 20K de tamaño, los cuales no pueden ser grabados desde el SD al PC-E650. He cambiado el código y recompilado para que admita programas de, por lo menos, 40K, modificando las opciones del archivo commands.h.
 
-// communication data depth (max file size during LOAD)
-
-if defined TARGET_NUCLEO_L432KC
-
-define OUT_BUF_SIZE 40000
-
+// communication data depth (max file size during LOAD)   
+if defined TARGET_NUCLEO_L432KC.    
+define OUT_BUF_SIZE 40000    
 define IN_BUF_SIZE 2000
 
