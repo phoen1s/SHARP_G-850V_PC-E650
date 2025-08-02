@@ -15,9 +15,6 @@ La solución propuesta emula esta unidad física, permitiendo a los Sharp Pocket
 <p align="center">
 
 
-
-
-
 La url del proyecto es:
 https://github.com/ffxx68/Sharp_ce140f_emul
 
@@ -27,7 +24,10 @@ https://booth.pm/ja/items/4941857
 El driver original tiene una pequeña limitación con los programas de más de 20K de tamaño, los cuales no pueden ser grabados desde el SD al PC-E650. He cambiado el código y recompilado para que admita programas de, por lo menos, 40K, modificando las opciones del archivo commands.h.
 
 // communication data depth (max file size during LOAD)
+
 if defined TARGET_NUCLEO_L432KC
+
 define OUT_BUF_SIZE 40000
+
 define IN_BUF_SIZE 2000
 
