@@ -18,4 +18,5 @@ A continuación, se muestra una lista de instrucciones que el ordenador comprend
 
 OBTENER, TOMAR, EXAMINAR, LEER, DAR, DECIR, RECOGER, PONER, ATAR, ESCALAR, IZAR, USAR, ABRIR, ENCENDER, LLENAR, PLANTAR, REGAR, BLANDIR, VACIAR, ENTRAR, ATRAVESAR, QUITAR, ALIMENTAR, GIRAR, SUMERGIRSE, RESPONDER, DEJAR, ARROJAR, INSERTAR, SOPLAR, TIRAR, COMER, MOVER, DENTRO, REPICAR, CORTAR, SOSTENER, QUEMAR, ENVENENAR, MOSTRAR, BEBER, CONTAR, PAGAR, HACER, ROMPER, ROBAR, REUNIR, REFLEJAR, INVENTARIO
 
-Esta versión para la SHARP PC-G850VS es necesario crear el archivo RAM DATA FILE con el nombre de MISTERIO.DAT y reservar 1000 bytes, esto es necesario para el guardado del juego en la SHARP
+Esta versión para la SHARP PC-G850VS es necesario crear el archivo RAM DATA FILE con el nombre de MISTERIO.DAT y reservar 1000 bytes,
+en la PC-E650 se debe crear la undad E: con INIT "E:1K", esto es necesario para el guardado del juego en la SHARP.
