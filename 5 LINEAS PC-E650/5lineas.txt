@@ -1,0 +1,97 @@
+***********************************************************************
+
+Versión 0.94
+
+para PC-E500/1480U (Sistema)
+
+Programado por H.Morita
+
+***********************************************************************
+
+Sección 1: Introducción
+============================================================
+
+El PC-E500/1480U tiene una pantalla relativamente grande de 40x40 caracteres y 13 líneas para su categoría, pero la funcionalidad básica es limitada. Este programa utiliza una fuente de 5x5 puntos para mejorar la visualización de líneas individuales y líneas invertidas.
+
+Sección 2: Requisitos del sistema
+============================================================
+
+Se espera que funcione en el sistema PC-E500/1480U (se ha confirmado en PC-E500 ROM Ver.2). Sin al menos 14KB de memoria disponible (incluyendo el área de trabajo), no se podrá cargar el programa.
+
+Sección 3: Método de instalación
+==============================================
+
+"5LINES" está disponible en [S1:]. Copie "5LINST" y asegúrese de tener al menos el área de trabajo requerida. Luego ejecute:
+
+FPOKE &BFE03,&1A,&FD,&B,0,&1C,0:CALL &FFFD8
+
+Después, ejecute:
+
+LOADM "5LINST":CALL &HBE000
+
+Si todo es correcto, aparecerá "Complete! Hit any key to reset", indicando que la instalación fue exitosa. Si aparece "Not enough memory", significa que no hay suficiente espacio en [S1:]. Si aparece "5Lines already exist", significa que el programa ya está instalado.
+
+Sección 4: Configuración
+============================================================
+
+(1) Configuración de líneas
+INIT"SCRN:4" o INIT"SCRN:5" permite cambiar el número de líneas invertidas. Si no se especifica, se usará la configuración actual.
+
+(2) Configuración de funciones
+"5LINES" tiene las siguientes limitaciones en el modo de 5 líneas:
+
+a. La configuración de "$45" (Juego de caracteres invertidos) afecta la dirección del temporizador lento (SLOW TIMER). Esto es similar a cómo MENU y otros programas manejan BASIC.
+
+b. En el modo de 5 líneas, la dirección de visualización LCD (&BFC9E) se ajusta para coincidir con el modo estándar.
+
+c. En el modo de comunicación, los bits $47 y $48 controlan la configuración de comunicación. Para evitar conflictos, se recomienda desactivar la configuración de comunicación antes de usar el programa.
+
+Sección 5: Notas de uso
+=======================================================
+
+El sistema PC-E500/1480U está diseñado principalmente para 4 líneas invertidas, lo que puede causar algunos problemas:
+
+- En modo PRO, la primera línea puede no mostrarse correctamente.
+- En FILES, pueden aparecer errores de sintaxis.
+- Pueden quedar residuos en la pantalla.
+- Otros problemas menores.
+
+Se recomienda ejecutar "5LINES" después de otros programas de visualización para evitar conflictos.
+
+Sección 6: Detalles técnicos
+=================================================
+
+"5LINES" utiliza comunicación para manejar la visualización en modo de 5 líneas. La dirección $53 se usa para borrar líneas individuales. Las direcciones $40, $46 y $58 se manejan de manera estándar.
+
+En modo de 5 líneas, el temporizador lento (SLOW TIMER) afecta la visualización. La dirección &BFC84 permite ajustar la velocidad de visualización.
+
+Los caracteres entre $00-$1F y $E0-$FF están predefinidos, mientras que los caracteres entre $20-$7F y $A0-$DF pueden personalizarse.
+
+Sección 7: Historial de versiones
+==============================================
+
+Versión 0.90 93/10/30 Lanzamiento inicial
+0.91 11/20 Corrección de retorno de funciones
+0.92 12/10 Mejoras en la configuración
+0.93 95/10/08 Mejoras en el instalador
+0.94 96/01/27 Corrección de errores
+
+Sección 8: Derechos de autor
+==========================================================
+
+Los derechos de autor del programa y la documentación pertenecen a H.Morita. Se permite el uso personal, pero cualquier modificación o distribución debe incluir todos los archivos originales. No se permite la distribución comercial sin permiso.
+
+Sección 9: Referencias
+======================================================
+
+Para desarrollar este programa, se consultaron las siguientes referencias:
+- Artículo sobre PC-E500/1480U en PJ'92/12
+- Manual de referencia de PC-E500
+
+Sección 10: Comentarios finales
+============================================================
+
+¡Espero que disfruten usando este programa!
+
+NIFTY-Serve JAC01304
+Paquete de comunicación #1827
