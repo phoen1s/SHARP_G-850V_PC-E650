@@ -1,4 +1,4 @@
-# Placa emuladora CE-104F para Sharp PC-E650 y compatibles
+# Placa emuladora CE-104F para Sharp PC-E650
 
 
 Se ha desarrollado un módulo de hardware que emula la unidad de disquete Sharp CE-140F, utilizando una tarjeta SD y un microcontrolador STM32.
@@ -10,7 +10,10 @@ La unidad Sharp CE-140F era una extensión rara y costosa compatible con varios 
 La solución propuesta emula esta unidad física, permitiendo a los Sharp Pocket PC gestionar archivos de manera completa a través de una tarjeta SD, haciendo posible el intercambio de datos con una PC moderna.
 
 
-
+<p align="center">
+<img src="https://github.com/user-attachments/assets/f8fdfb40-48c0-4324-acc9-169b6ee33f65" width="400">
+</p>
+<p align="center">
 
 
 La url del proyecto es:
@@ -21,8 +24,8 @@ https://booth.pm/ja/items/4941857
 
 El driver original tiene una pequeña limitación con los programas de más de 20K de tamaño, los cuales no pueden ser grabados desde el SD al PC-E650. He cambiado el código y recompilado para que admita programas de, por lo menos, 40K, modificando las opciones del archivo commands.h.
 
-// communication data depth (max file size during LOAD)
-if defined TARGET_NUCLEO_L432KC
-define OUT_BUF_SIZE 40000
+// communication data depth (max file size during LOAD)   
+if defined TARGET_NUCLEO_L432KC.    
+define OUT_BUF_SIZE 40000    
 define IN_BUF_SIZE 2000
 
