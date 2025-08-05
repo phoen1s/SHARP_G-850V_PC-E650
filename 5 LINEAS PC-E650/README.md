@@ -37,7 +37,7 @@ Si todo va bien, en la unidad E: se creará el archivo en código máquina 5LINS
  	INIT "SCRN:5"
 
 <p align="center">
-<img src="https://github.com/user-attachments/assets/14b9d3db-6353-4afa-97d3-b2bb688c5bcb" width="400">
+<img src="https://github.com/user-attachments/assets/082c972d-815d-4b50-adee-bc86bcca6a9f" width="400">
 </p>
 <p align="center">
 
