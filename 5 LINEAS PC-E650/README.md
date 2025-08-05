@@ -27,6 +27,13 @@ Si todo va bien, en la unidad E: se creará el archivo en código máquina 5LINS
 	•	Si ya reservaste el área de código máquina, pulsa ENTER: 
  		el programa se copiará en memoria y se ejecutará.
  
+<p align="center">
+<img src="https://github.com/user-attachments/assets/a55537d8-dc85-4f92-a2c2-91a7ea5cba01" width="400">
+</p>
+<p align="center">
+
+
+   
 	7.	Cambiar entre 4 y 5 líneas
  	INIT "SCRN:4"
  	INIT "SCRN:5"
