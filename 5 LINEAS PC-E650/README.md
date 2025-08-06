@@ -4,23 +4,42 @@
 Cómo activar el modo de 5 líneas en una Sharp PC-E650
 
 A continuación explico los pasos para hacerlo fácilmente:  
+
 	1.	Crear una unidad E: de 20 KB:  
-	INIT "E:20K". 
+	INIT "E:20K"   
 	2.	Cargar el archivo 5INST.UU:  
-	LOAD "COM:"  
+	LOAD "COM:"   
 	3.	Ejecutarlo:  
 	RUN  
+ 
 Si todo va bien, en la unidad E: se creará el archivo en código máquina 5LINST.  
+
 	4.	Si tienes una SD en X:, puedes copiar ese archivo para uso futuro, por ejemplo:  
-	COPY "E:5INST.UU" TO "X:5LINEAS.HBE"  
+	COPY "E:5INST.UU" TO "X:5LINEAS.HBE"   
 	5.	Ahora carga el archivo 5LINEAS.BAS:  
-	LOAD "5LINEAS.BAS"  
+	LOAD "5LINEAS.BAS"   
 	6.	Ejecuta:  
 	RUN  
 
-	•	Si no reservaste memoria para código máquina, pulsa N. La máquina se reiniciará y deberás volver a ejecutar con RUN.
-	•	Si ya reservaste el área de código máquina, pulsa ENTER: el programa se copiará en memoria y se ejecutará.
+	•	Si no reservaste memoria para código máquina, pulsa N. 
+ 		La máquina se reiniciará y deberás volver a ejecutar con RUN.
+   
+	•	Si ya reservaste el área de código máquina, pulsa ENTER: 
+ 		el programa se copiará en memoria y se ejecutará.
  
- Cambiar entre 4 y 5 líneas
- INIT "SCRN:4"
- INIT "SCRN:5"
+<p align="center">
+<img src="https://github.com/user-attachments/assets/a55537d8-dc85-4f92-a2c2-91a7ea5cba01" width="400">
+</p>
+<p align="center">
+   
+	7.	Cambiar entre 4 y 5 líneas
+ 	INIT "SCRN:4"
+ 	INIT "SCRN:5"
+
+<p align="center">
+<img src="https://github.com/user-attachments/assets/082c972d-815d-4b50-adee-bc86bcca6a9f" width="400">
+</p>
+<p align="center">
+
+
+  
