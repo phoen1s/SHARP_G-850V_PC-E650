@@ -7,8 +7,10 @@ A continuación explico los pasos para hacerlo fácilmente:
 
 	1.Crear una unidad E: de 20 KB:  
 	INIT "E:20K"   
+ 
 	2.Cargar el archivo 5INST.UU:  
 	LOAD "COM:"   
+ 
 	3.Ejecutarlo:  
 	RUN  
  
@@ -16,8 +18,10 @@ Si todo va bien, en la unidad E: se creará el archivo en código máquina 5LINS
 
 	4.Si tienes una SD en X:, puedes copiar ese archivo para uso futuro, por ejemplo:  
 	COPY "E:5INST.UU" TO "X:5LINEAS.HBE"   
+ 
 	5.Ahora carga el archivo 5LINEAS.BAS:  
 	LOAD "5LINEAS.BAS"   
+ 
 	6.Ejecuta:  
 	RUN  
 
