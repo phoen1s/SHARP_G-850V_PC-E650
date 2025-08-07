@@ -36,7 +36,7 @@ Si todo va bien, en la unidad E: se creará el archivo en código máquina 5LINS
 </p>
 <p align="center">
    
-	7.	Cambiar entre 4 y 5 líneas
+	7.Cambiar entre 4 y 5 líneas
  	INIT "SCRN:4"
  	INIT "SCRN:5"
 
