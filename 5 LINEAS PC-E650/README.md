@@ -43,3 +43,8 @@ Si todo va bien, en la unidad E: se creará el archivo en código máquina 5LINS
 
 
   
+
+
+
+
+  
