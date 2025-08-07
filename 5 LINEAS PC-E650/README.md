@@ -1,4 +1,4 @@
-# 5 Lineas - SHARP PC-E650 y compatibles
+# 5 Lineas - SHARP PC-E650
 
 
 Cómo activar el modo de 5 líneas en una Sharp PC-E650
