@@ -1,4 +1,4 @@
-## **SHARP-G850V-WIFI-SEND** ## 
+## **WIFI SEND - SHARP G850V** ## 
 
 Este es un módulo de conversión serial Wi-Fi para la computadora de bolsillo SHARP PC-G850. Al conectar este módulo a la PC-G850, puede comunicarse con su PC mediante Wi-Fi. 
 
