@@ -1,4 +1,4 @@
-# Reservar area lenguaje de maquina Sharp PC-E650 y compatibles
+# Reservar area lenguaje de maquina - SHARP PC-E650
 
 
 Este es un programa para reservar un área de lenguaje máquina.

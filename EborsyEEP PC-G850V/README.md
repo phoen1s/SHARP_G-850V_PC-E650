@@ -1,4 +1,4 @@
-# EborsyEEP PC-G850V y compatibles
+# EborsyEEP - SHARP PC-G850V y compatibles
 
 
 Se trata de una placa de memoria complementaria que se conecta al terminal de bus del sistema de una computadora de bolsillo (PC-G850V/PC-G850, en adelante denominada Pocket Computer) y está equipada con 128 KB de SRAM y 8 MB de EEPROM. Sin embargo, solo se pueden utilizar 96 KB de SRAM como memoria externa.
