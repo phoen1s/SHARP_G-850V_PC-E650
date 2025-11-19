@@ -9,5 +9,4 @@ Este archivo es para configurar la SHARP PC-E650 a una velocidad de 19200 baudio
    
 
 
-
   
