@@ -19,6 +19,7 @@ Los pasillos están llenos sombras que susurran secretos perdidos en el tiempo. 
 ¿Podrás guiar a Conan a través de estas mortíferas mazmorras y ayudarlo a reclamar los tesoros que le corresponden por derecho? La aventura te espera en Conan y las Mazmorras del Caos. ¡Afila tu espada, prepara tus pociones y entra en la oscuridad!.
 
 Instalacion:
+
 opcion 1:
 https://www.youtube.com/watch?v=xjovwLv7af0
 
