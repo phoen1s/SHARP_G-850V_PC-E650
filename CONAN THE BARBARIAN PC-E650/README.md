@@ -20,10 +20,10 @@ Los pasillos están llenos sombras que susurran secretos perdidos en el tiempo. 
 
 Instalacion:
 
-opcion 1:
+Opcion 1 con APLIKS:
 https://www.youtube.com/watch?v=xjovwLv7af0
 
-Opcion 2:
+Opcion 2 por puerto COM:
 https://www.youtube.com/watch?v=1ZwrOylf2eA
 
 Pagina de descarga de APLINKS para Win32:
