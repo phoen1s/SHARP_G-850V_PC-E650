@@ -29,3 +29,28 @@ if defined TARGET_NUCLEO_L432KC.
 define OUT_BUF_SIZE 40000    
 define IN_BUF_SIZE 2000
 
+## UPDATE 2026
+
+He creado un **nuevo driver** para la placa emuladora CE-140F, puedes 
+descargarlo en la carpeta **DRIVER CE-104F** : arregla lo que
+no funcionaba del original y además añade comandos que nunca tuvo.
+
+Parte del port a STM32CubeIDE de ffxx68, que compilaba pero no llegaba a
+funcionar, y lo lleva hasta el final.
+
+**Lo que estaba roto y ya no:**
+
+- 📂 `FILES` fallaba al bajar por el listado
+- ⚡ `LOADM` no podía con ficheros grandes — ahora entran 54 KB sin límite
+
+**Lo que no existía en ninguna versión anterior:**
+
+- `SAVE ,A` — guardar en ASCII
+- Comodines en `FILES` (`FILES "X:C*.BAS"`)
+- `EOF`, `NAME`, `COPY`, `SET`, `LOC` y `LOF`
+
+**Resultado:** funcionan **18 de los 19 comandos** del manual del CE-140F. El
+único que falta es `INIT`, dejado fuera a propósito: en una tarjeta SD
+formatear no aporta nada.
+
+Probado en una PC-E650 con la placa v1.5 de PoyokomaDanna.
