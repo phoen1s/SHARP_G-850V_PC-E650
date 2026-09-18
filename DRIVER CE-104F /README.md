@@ -204,3 +204,9 @@ respetan. Para ver qué está protegido, el camino es `DIRLIST.TXT`.
 fichero ASCII como binario, o usa nombres distintos.
 - Si aparecen errores intermitentes tras un rato largo de uso, mira las pilas del
 Sharp: el nivel de las señales queda justo en el umbral y es sensible a eso.
+
+---
+
+## Vídeo de referencia
+
+https://www.youtube.com/watch?v=bGOUfeed6xE
