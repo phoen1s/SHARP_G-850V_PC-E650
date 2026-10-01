@@ -238,8 +238,8 @@ Un RESET también lo quita, pero se lleva la reserva por delante.
 | versión | autor | año | sistema |
 |---|---|---|---|
 | APLINKS 1.03 | N.Kon | 1992-93 | MS-DOS (fuente en C) |
-| APLINKS for Mac 1.03 | — | — | Mac clásico |
-| aplinksw32 1.02e | — | — | Windows. Desde la 1.01 pone fecha y hora |
+| APLINKS for Mac 1.03 | Jun Kiyokawa | 1995-96 | Mac clásico |
+| aplinksw32 1.02e | Y. Akagawa | 1996-97 | Windows. Desde la 1.01 pone fecha y hora |
 | **APLINKS para macOS 1.0** | PHOENIX | 2026 | macOS nativo |
 
 Habla el protocolo de la 1.03 sin cambiarlo, así que sustituye a cualquiera de
