@@ -15,14 +15,23 @@ original no son míos: ver [Créditos](#créditos).
 
 # PLINKC ver 1.64
 
+## En resumen
+
+| | |
+|---|---|
+| **Reserva necesaria** | **127 KB**: de `&A0000` a `&BFC00` |
+| **Dónde se instala** | código en `&A0000-&A053A`; sus buffers y caché en `&A053B-&A0A76` |
+| **Instalación** | `LOADM` + `CALL &A0000`, o `RUN` de `PLINKC64.BAS` |
+| **Comprobación** | `PRINT HEX$ (PEEK &BFCA2+PEEK &BFCA3*256+PEEK &BFCA4*65536)` → `A0144` |
+
 ## Versiones
 
 | versión | autor | año | qué aporta |
 |---|---|---|---|
 | PLINK.SYS 1.04 | N.Kon | 1990-94 | el driver original. Tres buffers fijos de 129 B, sin lista enlazada |
 | PLINKC 1.60-1.62 | D. Mizobata | 1996-99 | caché de 8 sectores y modo 512 KB. Duplica la velocidad |
-| **PLINKC 1.63** | PHOENIX | 2026 | `ORG` fijo en `&AD000`: sale del slot `S1:` |
-| **PLINKC 1.64** | PHOENIX | 2026 | **+ volcado automático del buffer de escritura** |
+| **PLINKC 1.63** | PHOENIX | 2026 | `ORG` fijo: sale del slot `S1:` |
+| **PLINKC 1.64** | PHOENIX | 2026 | **+ volcado automático del buffer de escritura**; desde el 26-09-2026 en `&A0000` |
 
 Probado en una PC-E650 el 31 de agosto de 2026.
 
@@ -37,19 +46,26 @@ usando su tabla de relocalización. Pero `E:` y `F:` son bloques `RAMFILE` del
 *mismo* slot: crear el disco RAM mueve el driver de sitio, y quedan colgando
 sus punteros absolutos y la cadena de dispositivos del IOCS en `&BFCA2`.
 
-**La solución.** `ORG &AD000`, dentro del área de código máquina reservada, que
-no es de nadie más. Al no moverse nunca, sobra toda la maquinaria de
-reubicación:
+**La solución.** Una dirección fija dentro del área de código máquina
+reservada, que no es de nadie más. Al no moverse nunca, sobra toda la
+maquinaria de reubicación:
 
 | | fichero | cuerpo | carga |
 |---|---|---|---|
 | PLINKC 1.62 original | 1554 B | 1538 B | `&BF000-&BF601`, y de ahí a `S1:` |
-| PLINKC 1.64 | 1348 B | 1332 B | `&AD000-&AD533`, y ahí se queda |
+| PLINKC 1.64 | 1355 B | 1339 B | `&A0000-&A053A`, y ahí se queda |
 
-259 bytes menos de código y tabla que ya no hacen falta.
+Ocupa 199 bytes menos que el original, aun llevando el volcado automático y el
+mensaje nuevo.
 
 `FILES "S1:"` ya no muestra ningún `PLINK.SYS`: esta versión no es un bloque de
-memoria, es código máquina residente.
+memoria, es código máquina residente. Y `INIT "E:"` se puede hacer antes o
+después de instalarlo.
+
+Primero vivió en `&AD000`. **El 26-09-2026 se movió a `&A0000`**, al principio
+de la página 0A, para dejar libre ese hueco. Solo cambió el `ORG`: de 1339 bytes
+cambian 79, y todos son la parte alta de una dirección, que baja exactamente
+`D0h`.
 
 ## Cambio 2 — el buffer se vuelca solo
 
@@ -76,38 +92,68 @@ nv_fin: popu y / x / i / ba
 nv_ya:
 ```
 
-| | cuerpo | fin |
-|---|---|---|
-| sin volcado (`PLINKCF.BIN`) | 1279 B | `&AD4FE` |
-| con volcado (`PLINKC64.BIN`) | 1332 B | `&AD533` |
+| | cuerpo |
+|---|---|
+| PLINKC 1.63, sin volcado | 1279 B |
+| + volcado | 1332 B |
+| + mensaje de instalación nuevo = **PLINKC 1.64** | **1339 B** |
 
+## Cambio 3 — el mensaje de instalación
 
-## Mapa de memoria
+Al instalar salía el texto de la 1.62. Ahora sale:
 
-Reserva de 75 KB con `SET.BAS` (de E.KAKO) apuntando a `&AD000`:
+```
+PLINKC ver 1.64 update by PHOENIX, 2026
+based on PLINKC ver 1.62 by Daisuke
+```
+
+## Memoria: hay que reservar 127 KB
+
+PLINKC vive en el área de código máquina reservada, al principio de la página
+0A. **La reserva tiene que empezar en `&A0000`**: son 127 KB, hasta `&BFC00`.
+Se hace con `SET.BAS` de E.KAKO, contestando `127K` o `&A0000`. Si la reserva
+empieza más arriba, al cargar el driver se escribe encima de la memoria del
+BASIC y la máquina se cuelga.
 
 | desde | hasta | qué |
 |---|---|---|
-| `&AD000` | `&AD533` | PLINKC 1.64 (lo que hay en el `.BIN`) |
-| `&AD534` | `&ADA6F` | sus buffers y la caché: 1340 B que no van en el fichero |
-| `&ADA70` | `&ADFFF` | libre |
+| `&A0000` | `&A053A` | PLINKC 1.64 (lo que hay en el `.BIN`) |
+| `&A053B` | `&A0A76` | sus buffers y la caché: 1340 B que no van en el fichero |
+| `&A0A77` | `&ADFFF` | libre (54.665 B) |
 | `&AE000` | | variables de los juegos |
 | `&B0000` | | objetos |
 | | `&BFC00` | tope del área reservada |
 
-Ojo con la segunda fila: el `.BIN` acaba en `&AD533`, pero el driver declara con
+Ojo con la segunda fila: el `.BIN` acaba en `&A053A`, pero el driver declara con
 `suborg` 1340 bytes más de área de trabajo —`sect_1`, `sect_2`, 7 sectores de
 caché de FAT y 1 de datos— que no viajan en el fichero y sí están ocupados en
-cuanto corre. El footprint real es `&AD000-&ADA6F`.
+cuanto corre. Lo que ocupa de verdad es `&A0000-&A0A76`, y no se puede cargar
+nada ahí mientras PLINKC esté instalado.
 
 ## Instalar
 
+### Con `PLINKC64.BAS`
+
+El instalador en BASIC, como el `PLINKC.BAS` de Mizobata: lleva el binario en
+líneas `'` y una rutina de 47 bytes que lo copia a `&A0000`. Hace falta la
+reserva de 127 KB antes. Si no está, o si `L:` ya está instalado, avisa y para
+sin tocar la memoria.
+
+### Con el `.BIN`
+
+Con la reserva de 127 KB ya hecha:
+
 ```
 LOADM "L:PLINKC64.BIN"
-CALL &AD000
+CALL &A0000
 ```
 
 Debe decir `Installed.` Si ya estaba, dice `Already exists.` y no hace nada.
+
+**Nunca cargues el `.BIN` encima de un PLINKC ya instalado en la misma
+dirección.** El `LOADM` escribe el fichero encima del driver en marcha, y con él
+los 3 bytes de `&A0144`, que una vez instalado apuntan al siguiente dispositivo.
+La pocket se cuelga y, al reiniciar, borra la memoria.
 
 ## Comprobar
 
@@ -115,16 +161,16 @@ Debe decir `Installed.` Si ya estaba, dice `Already exists.` y no hace nada.
 PRINT HEX$ (PEEK &BFCA2+PEEK &BFCA3*256+PEEK &BFCA4*65536)
 ```
 
-Tiene que salir **AD13D**, la cabecera del driver dentro del binario. Su
+Tiene que salir **A0144**, la cabecera del driver dentro del binario. Su
 estructura, verificada byte a byte sobre `PLINKC64.BIN`:
 
 | dirección | contenido |
 |---|---|
-| `&AD13D` | puntero al siguiente driver de la cadena (3 B) |
-| `&AD140` | número de dispositivo, asignado al instalar desde el 10 |
-| `&AD141` | atributo `$83` |
-| `&AD142` | entrada del cuerpo: `&AD172` |
-| `&AD145` | nombre: `'L:',0` |
+| `&A0144` | puntero al siguiente driver de la cadena (3 B) |
+| `&A0147` | número de dispositivo, asignado al instalar desde el 10 |
+| `&A0148` | atributo `$83` |
+| `&A0149` | entrada del cuerpo: `&A0179` |
+| `&A014C` | nombre: `'L:',0` |
 
 ## Desinstalar
 
@@ -135,7 +181,7 @@ P=PEEK &BFCA2+PEEK &BFCA3*256+PEEK &BFCA4*65536
 POKE &BFCA2,PEEK P,PEEK (P+1),PEEK (P+2)
 ```
 
-Los tres bytes de `&AD13D` son el driver que había antes de instalarse; al
+Los tres bytes de `&A0144` son el driver que había antes de instalarse; al
 copiarlos a `&BFCA2` la cadena se cierra saltándoselo. `FILES "L:"` debe dar
 error.
 
@@ -143,20 +189,18 @@ Sólo vale si PLINKC es el primero de la cadena, que es lo que comprueba el
 `PRINT HEX$` de arriba.
 
 El `LOADM` no hay que deshacerlo: son bytes muertos en el área reservada. Ahora
-bien, siguen ahí, así que **`CALL &AD000` lo vuelve a instalar**. Para dejarlo
+bien, siguen ahí, así que **`CALL &A0000` lo vuelve a instalar**. Para dejarlo
 muerto de verdad:
 
 ```
-POKE &AD000,&07
+POKE &A0000,&07
 ```
 
-`07` es `RETF`: el `CALL` vuelve en el acto sin hacer nada. Y para recuperar
-además los 12 KB, `SET.BAS` con `&B0000` — `MACWRK` es el suelo, no el techo,
-así que los objetos de `&B0000` para arriba no se tocan.
+`07` es `RETF`: el `CALL` vuelve en el acto sin hacer nada. Para devolver la
+página 0A al BASIC, `SET.BAS` con la dirección donde empiece lo siguiente que
+uses, por ejemplo `&AE000` si ahí tienes las variables.
 
 Un RESET también lo quita, pero se lleva la reserva por delante.
-
-
 
 ---
 
