@@ -21,7 +21,7 @@ original no son míos: ver [Créditos](#créditos).
 |---|---|
 | **Reserva necesaria** | **127 KB**: de `&A0000` a `&BFC00` |
 | **Dónde se instala** | código en `&A0000-&A053A`; sus buffers y caché en `&A053B-&A0A76` |
-| **Instalación** | `LOADM` + `CALL &A0000`, o `RUN` de `PLINKC64.BAS` |
+| **Instalación** | `RUN` de `CONFIG.BAS`, que lo hace todo. También `PLINKC64.BAS`, o `LOADM` + `CALL &A0000` |
 | **Comprobación** | `PRINT HEX$ (PEEK &BFCA2+PEEK &BFCA3*256+PEEK &BFCA4*65536)` → `A0144` |
 
 ## Versiones
@@ -111,9 +111,9 @@ based on PLINKC ver 1.62 by Daisuke
 
 PLINKC vive en el área de código máquina reservada, al principio de la página
 0A. **La reserva tiene que empezar en `&A0000`**: son 127 KB, hasta `&BFC00`.
-Se hace con `SET.BAS` de E.KAKO, contestando `127K` o `&A0000`. Si la reserva
-empieza más arriba, al cargar el driver se escribe encima de la memoria del
-BASIC y la máquina se cuelga.
+Se hace con `SET.BAS` de E.KAKO, contestando `127K` o `&A0000`, o la hace
+`CONFIG.BAS` solo. Si la reserva empieza más arriba, al cargar el driver se
+escribe encima de la memoria del BASIC y la máquina se cuelga.
 
 | desde | hasta | qué |
 |---|---|---|
@@ -131,6 +131,33 @@ cuanto corre. Lo que ocupa de verdad es `&A0000-&A0A76`, y no se puede cargar
 nada ahí mientras PLINKC esté instalado.
 
 ## Instalar
+
+### Con `CONFIG.BAS` (lo hace todo)
+
+`CONFIG.BAS` deja la pocket lista de una vez, con un solo `RUN`:
+
+1. **Puerto y teclas.** Configura `COM:` a 19200 bps (8N1) y las teclas de
+   función: PF2 `LOADM "E:`, PF3 `CALL&B0000`, PF4 `FILES "X:"` y PF5
+   `LOAD "COM:"`.
+2. **Reserva 127 KB sin preguntar**, de `&A0000` a `&BFC00`, con la rutina de
+   `SET.BAS` de E.KAKO. Si ya estaba hecha, se la salta.
+3. **Sigue solo después de reservar.** Esa rutina reinicia el BASIC y el
+   programa se para. Como la primera línea es `ARUN`, el reinicio lo vuelve a
+   lanzar y continúa donde iba.
+4. **Enseña la reserva** (`Now A0000 - BFC00 : 127 KB`) durante un momento
+   (`WAIT 50`).
+5. **Instala PLINKC en `&A0000`**, si `L:` no estaba ya. Antes comprueba la
+   reserva y que el driver no esté instalado, para no escribir encima de uno en
+   marcha.
+6. **Crea el disco `E:` de 20 KB**, si no existe. `INIT` solo funciona en modo
+   directo, así que el programa deja `INIT "E:20K"` + ENTER en el buffer de
+   teclado (función 44h del IOCS) y se ejecuta al terminar, como si lo
+   hubieras tecleado. Si `E:` ya existe, dice `E: YA EXISTE` y no la toca. Si
+   existe pero está llena, el `INIT` te pide confirmación antes de borrarla.
+
+**Al encender.** Por el `ARUN`, el programa arranca cada vez que enciendes la
+pocket mientras siga en memoria. Pero lo primero que hace es mirar si la
+reserva, `L:` y `E:` ya están, y si es así termina al instante sin hacer nada.
 
 ### Con `PLINKC64.BAS`
 
